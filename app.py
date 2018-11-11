@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/teste')
+@app.route('/')
 def index():
     data = [{"attr": {"id": "t1",
                       "name": "Task 1",
@@ -77,4 +77,5 @@ def index():
     return jsonify(data)
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
