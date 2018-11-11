@@ -9,6 +9,7 @@ db_connect = create_engine('sqlite:///chinook.db')
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
+conn = db_connect.connect()  # connect to database
 
 
 class Employees(Resource):
@@ -61,10 +62,11 @@ class Employees(Resource):
                        }
                   ]
                   }, ]
-        # query = conn.execute("select * from employees")  # This line performs query and returns json result
+        querybd = conn.execute("select * from employees")  # This line performs query and returns json result
+        print jsonify(querybd)
         #return {'employees': [i[0] for i in query.cursor.fetchall()]}  # Fetches first column that is Employee ID
         return jsonify(query)
-        conn = db_connect.connect()  # connect to database
+
 
 api.add_resource(Employees, '/employees')  # Route_1
 
