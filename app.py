@@ -63,7 +63,7 @@ class Employees(Resource):
                   ]
                   }, ]
         querybd = conn.execute("select * from employees")  # This line performs query and returns json result
-        print (jsonify(querybd))
+        print jsonify(querybd)
         #return {'employees': [i[0] for i in query.cursor.fetchall()]}  # Fetches first column that is Employee ID
         return jsonify(query)
 
@@ -79,4 +79,4 @@ def after_request(response):
   return response
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
