@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/teste')
 def index():
     data = [{"attr": {"id": "t1",
                       "name": "Task 1",
