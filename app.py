@@ -14,70 +14,49 @@ api = Api(app)
 class Employees(Resource):
     def get(self):
         query = [{"attr": {"id": "t1",
-                           "name": "Task 1",
-                           "resource": "Chadwick",
-                           "start": "1/1/2014",
-                           "end": "10/1/2014"
+                           "name": "Wibeu",
+                           "superiorid": "Wibeu",
+                           "subordinateid": "Curusego",
                            },
                   "children": [
                       {"attr": {"id": "t1:1",
-                                "name": "Task 1-1",
-                                "resource": "Chris",
-                                "start": "1/1/2014",
-                                "end": "3/1/2014"
+                                "name": "Curusego",
+                                "superiorid": "Wibeu",
+                                "subordinateid": "Nalvar",
                                 },
                        "children": [
                            {"attr": {"id": "t1:1:1",
-                                     "name": "Task 1-1-1",
-                                     "resource": "Henry",
-                                     "start": "1/1/2014",
-                                     "end": "2/1/2014"
+                                     "name": "Nalvar",
+                                     "superiorid": "Curusego",
+                                     "subordinateid": "",
                                      }
                             },
                            {"attr": {"id": "t1:1:2",
-                                     "name": "Task 1-1-2",
-                                     "resource": "Victor",
-                                     "start": "2/1/2014",
-                                     "end": "3/1/2014"
+                                     "name": "Bufiobere",
+                                     "superiorid": "Curusego",
+                                     "subordinateid": "",
                                      }
                             }
                        ]
                        },
                       {"attr": {"id": "t1:2",
-                                "name": "Task 1-2",
-                                "resource": "Jim",
-                                "start": "3/1/2014",
-                                "end": "6/1/2014"
+                                "name": "Flunodae",
+                                "superiorid": "Wibeu",
+                                "subordinateid": "Osceo",
                                 },
                        "children": [
                            {"attr": {"id": "t1:2:1",
-                                     "name": "Task 1-2-1",
-                                     "resource": "Jay",
-                                     "start": "3/1/2014",
-                                     "end": "5/1/2014"
-                                     }
-                            },
-                           {"attr": {"id": "t1:2:2",
-                                     "name": "Task 1-2-2",
-                                     "resource": "Karin",
-                                     "start": "5/1/2014",
-                                     "end": "6/1/2014"
+                                     "name": "Osceo",
+                                     "superiorid": "Flunodae",
+                                     "subordinateid": "",
                                      }
                             }
                        ]
                        },
                       {"attr": {"id": "t1:3",
-                                "name": "Task 1-3",
-                                "resource": "Chadwick",
-                                "start": "6/1/2014",
-                                "end": "8/1/2014"
-                                }
-                       },
-                      {"attr": {"id": "t1:4",
-                                "name": "Task 1-4",
-                                "resource": "Chris",
-                                "start": "8/1/2014",
-                                "end": "10/1/2014"
+                                "name": "Envailslag",
+                                "superiorid": "Wibeu",
+                                "subordinateid": "",
                                 }
                        }
                   ]
