@@ -18,10 +18,10 @@
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="65" column="29" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+              <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
-                <marker date="1541973027451" expanded="true" signature="2559:2582" ph="select * fro... employees" />
+                <marker date="1541973205003" expanded="true" signature="2559:2582" ph="select * fro... employees" />
               </folding>
             </state>
           </provider>
@@ -341,7 +341,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <marker date="1541973027451" expanded="true" signature="2559:2582" ph="select * fro... employees" />
+            <marker date="1541973205003" expanded="true" signature="2559:2582" ph="select * fro... employees" />
           </folding>
         </state>
       </provider>
@@ -381,10 +381,10 @@
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
-          <caret line="65" column="29" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <marker date="1541973027451" expanded="true" signature="2559:2582" ph="select * fro... employees" />
+            <marker date="1541973205003" expanded="true" signature="2559:2582" ph="select * fro... employees" />
           </folding>
         </state>
       </provider>
