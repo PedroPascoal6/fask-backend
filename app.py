@@ -6,6 +6,7 @@ from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 import json
 import sqlite3
+import tools
 from json import dumps
 # from flask.ext.jsonpify import jsonify
 
@@ -16,7 +17,7 @@ api = Api(app)
 
 
 
-class Employees(Resource):
+class Services(Resource):
     def get(self):
         #conn = db_connect.connect()  # connect to database
         query = [{"attr": {"id": "t1",
@@ -72,24 +73,23 @@ class Employees(Resource):
         #print (jsonify(query))
         #return {'employees': [i[1] for i in querybd.cursor.fetchall()]}  # Fetches first column that is Employee ID
 
-        con = sqlite3.connect("politiciansBD.db")
-        # Print the table contents
-        data={}
-        for row in con.execute("select * from politician"):
-            data[row[0]] = {"name": row[1],
-                            "superiorid": row[2],
-                            "superiorName": row[3],
-                            "subordinateid": row[4],
-                            "subordinateName": row[5]}
-        print (data)
+        # con = sqlite3.connect("politiciansBD.db")
+        # # Print the table contents
+        # data={}
+        # for row in con.execute("select * from politician"):
+        #     data[row[0]] = {"name": row[1],
+        #                     "superiorid": row[2],
+        #                     "superiorName": row[3],
+        #                     "subordinateid": row[4],
+        #                     "subordinateName": row[5]}
+        # print (data)
+
+        #return jsonify(tools.getPolitician())
+        return query
 
 
 
-        return jsonify(data)
-
-
-
-api.add_resource(Employees, '/employees')  # Route_1
+api.add_resource(Services, '/employees')  # Route_1
 
 
 @app.after_request
