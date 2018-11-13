@@ -43,10 +43,23 @@ def save_politician(new_politician):
 
 
 def save_event(new_event):
-    event = Event(id=new_event.get('id'),
-                  date=new_event.get('date'),
+    event = Event(date=new_event.get('date'),
                   politician_id=new_event.get('politician_id'),
                   event_type=new_event.get('event_type'),
                   text=new_event.get('text'))
     db.session.add(event)
+    db.session.commit()
+
+
+def setPoliticianInactive(politician_id):
+    updateActiveStateOnPolitician(politician_id, False)
+
+
+def setPoliticianActive(politician_id):
+    updateActiveStateOnPolitician(politician_id, True)
+
+
+def updateActiveStateOnPolitician(politician_id, state):
+    politician = Politician.query.filter_by(id=politician_id).first()
+    politician.active = state
     db.session.commit()

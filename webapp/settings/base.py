@@ -1,7 +1,6 @@
 import os
 
 from pathlib import Path
-
 from dotenv import load_dotenv, find_dotenv
 from envparse import env
 
@@ -19,7 +18,7 @@ TRANSLATE_PORT = env.int('PORT', default=5005)
 
 # Database URI
 DB_PASSWORD = os.getenv('DATABASE_PASSWORD', 'secret')
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///politiciansBD.db')
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///../politiciansBD.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
