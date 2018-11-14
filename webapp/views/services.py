@@ -1,10 +1,10 @@
 from flask import jsonify
-from webapp.bdtools import updatePolitician,createEventOnJail,createEventOffJail
+from webapp.bdtools import updatePoliticians,createEventOnJail,createEventOffJail
 
 
 
 def dosomething():
-    c = updatePolitician()
+    c = updatePoliticians()
     return jsonify(c)
 
 
