@@ -7,6 +7,7 @@ data_formated = []
 
 def updatePolitician():
     politicians = Politician.query.all()
+    data_formated = []
     for row in politicians:
         politician = {"attr": {"id": row.id,
                                "active": row.active,
