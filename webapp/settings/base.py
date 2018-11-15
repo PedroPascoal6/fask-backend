@@ -22,6 +22,7 @@ SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///../politiciansBD.
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
+
 TESTING = False
 CREATE_SAMPLE_DATA = False
 

@@ -25,7 +25,8 @@ class Services(Resource):
         args = parser.parse_args()
         politician_id = str(args['politicianid'])
         jail = args['jail']
-        return services.createEvent(politician_id, jail)
+        services.createEvent(politician_id, jail)
+        return {"success": 'true'}
 
 
 api.add_resource(Services, '/politicians')  # Route_1
