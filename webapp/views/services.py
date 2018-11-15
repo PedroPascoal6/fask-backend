@@ -13,6 +13,7 @@ def to_array(rows):
 
 
 def createEvent(politician_id, jail):
+    print("createEvent jail->" + str(jail))
     if jail:
         createEventOnJail(politician_id)
     else:

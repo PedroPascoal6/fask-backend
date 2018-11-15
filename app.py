@@ -4,7 +4,7 @@ import os
 from webapp import factory
 from webapp.views import services
 from flask_cors import CORS
-from flask_restful import Resource, Api,reqparse
+from flask_restful import Resource, Api, reqparse
 
 os.environ['APP_SETTINGS_FILE'] = 'settings/local.py'
 
@@ -16,6 +16,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('politicianid', type=int)
 parser.add_argument('jail', type=bool)
 
+
 class Services(Resource):
     def get(self):
         return services.dosomething()
@@ -23,8 +24,8 @@ class Services(Resource):
     def post(self):
         args = parser.parse_args()
         politician_id = str(args['politicianid'])
-        jail = str(args['jail'])
-        return services.createEvent(politician_id,jail)
+        jail = args['jail']
+        return services.createEvent(politician_id, jail)
 
 
 api.add_resource(Services, '/politicians')  # Route_1

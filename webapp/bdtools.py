@@ -66,19 +66,22 @@ def remove_subordinates_not_active_old(subordinate_list):
             subordinate_list.append(subordinate)
     return subordinate_list
 
+
 def remove_subordinates_not_active(subordinate_list):
     print ("subordinate_list->" + str(subordinate_list))
     for subordinate in list(subordinate_list):
-        print("subordinado ["+str(subordinate.get('attr').get('id'))+"] tem filhos? " + str(subordinate.get('children')))
+        print(
+            "subordinado [" + str(subordinate.get('attr').get('id')) + "] tem filhos? " + str(
+                subordinate.get('children')))
         if subordinate.get('children'):
             subordinate = {'attr': subordinate.get('attr'),
-                          'children': remove_subordinates_not_active(subordinate.get('children'))}
-            print("subordinado ["+str(subordinate.get('attr').get('id'))+"] nova lista ->" + str(subordinate_list))
-        print("subordinado [" + str(subordinate.get('attr').get('id')) + "] está activo? ->" + str(subordinate.get('attr').get('active')))
+                           'children': remove_subordinates_not_active(subordinate.get('children'))}
+            print("subordinado [" + str(subordinate.get('attr').get('id')) + "] nova lista ->" + str(subordinate_list))
+        print("subordinado [" + str(subordinate.get('attr').get('id')) + "] está activo? ->" + str(
+            subordinate.get('attr').get('active')))
         if not subordinate.get('attr').get('active'):
             subordinate_list.remove(subordinate)
     return subordinate_list
-
 
 
 def updatePoliticians():
@@ -154,7 +157,7 @@ def generateData():
                         "name": "Curusego",
                         "active": True,
                         "superior_id": 0,
-                        "superior_id_original": 1,
+                        "superior_id_original": 0,
                         "superior_name": "Wibeu",
                         "subordinate_id": 2,
                         "subordinate_name": "Nalvar"
@@ -251,6 +254,7 @@ def generateData():
 def createEventOnJail(politician_id):
     readDBPolitician()
     superior_id = updateSubordinates_OnJail(politician_id)
+    print ("on create Event on Jail...superior_id = " + str(superior_id))
     setPoliticianInactive(politician_id, superior_id)
 
     new_event_0 = {
@@ -276,14 +280,15 @@ def updateSubordinates_OnJail(politician_id):
             if politician_selected.get('attr').get('active'):
                 new_superior_id = politician_selected.get('attr').get('id')
                 updateSubordinates(new_superior_id, politician_dictionary[int(politician_id)].get('children'), True)
-                return superior_id
+                return new_superior_id
 
 
 # TODO metodo para retirar um politico da cadeia deve repor os estados
 def createEventOffJail(politician_id):
     readDBPolitician()
-    setPoliticianActive(politician_id)
-    updateSubordinates_OutJail(politician_id)
+    substitute_id = politician_dictionary[int(politician_id)].get('attr').get('substitute_id')
+    setPoliticianActive(politician_id, None)
+    updateSubordinates_OutJail(politician_id, substitute_id)
     new_event_0 = {
         "date": datetime.now(),
         "politician_id": politician_id,
@@ -293,6 +298,7 @@ def createEventOffJail(politician_id):
     save_event(new_event_0)
 
 
-def updateSubordinates_OutJail(politician_id):
-    substitute_id = politician_dictionary[politician_id].get('attr').get('substitute_id')
-    resetSubordinates(politician_id, politician_dictionary[substitute_id].get('children'))
+def updateSubordinates_OutJail(politician_id, substitute_id):
+    print ("substitute_id -> "+str(substitute_id))
+    if substitute_id is not None:
+        resetSubordinates(politician_id, politician_dictionary[substitute_id])

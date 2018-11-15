@@ -4,6 +4,7 @@
     <list default="true" id="309f9095-752c-48d6-9346-03cbea3ed10e" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/politiciansBD.db" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/bdtools.py" afterPath="$PROJECT_DIR$/webapp/bdtools.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/models.py" afterPath="$PROJECT_DIR$/webapp/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/views/services.py" afterPath="$PROJECT_DIR$/webapp/views/services.py" />
@@ -24,8 +25,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+            <state relative-caret-position="56">
+              <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding>
                 <element signature="e#77#86#0" expanded="true" />
               </folding>
@@ -36,8 +37,8 @@
       <file leaf-file-name="services.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/views/services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -48,21 +49,17 @@
       <file leaf-file-name="bdtools.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/bdtools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="273" column="49" lean-forward="true" selection-start-line="273" selection-start-column="49" selection-end-line="273" selection-end-column="49" />
+            <state relative-caret-position="276">
+              <caret line="303" column="77" lean-forward="false" selection-start-line="303" selection-start-column="77" selection-end-line="303" selection-end-column="77" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#4039#5955#0" expanded="false" />
-                <element signature="e#6051#6520#0" expanded="false" />
-                <element signature="e#6547#11042#0" expanded="false" />
-                <element signature="e#11158#11465#0" expanded="false" />
-                <element signature="e#12631#12910#0" expanded="false" />
-                <element signature="e#12964#13140#0" expanded="false" />
-                <marker date="1542236939691" expanded="true" signature="10434:10515" ph="INSERT INTO politicianEvent... " />
-                <marker date="1542236939691" expanded="true" signature="10559:10640" ph="INSERT INTO politicianEvent... " />
-                <marker date="1542236939691" expanded="true" signature="10684:10765" ph="INSERT INTO politicianEvent... " />
-                <marker date="1542236939691" expanded="true" signature="10809:10890" ph="INSERT INTO politicianEvent... " />
-                <marker date="1542236939691" expanded="true" signature="10934:11015" ph="INSERT INTO politicianEvent... " />
+                <element signature="e#4091#6007#0" expanded="false" />
+                <element signature="e#6103#6572#0" expanded="false" />
+                <marker date="1542240780938" expanded="true" signature="10486:10567" ph="INSERT INTO politicianEvent... " />
+                <marker date="1542240780938" expanded="true" signature="10611:10692" ph="INSERT INTO politicianEvent... " />
+                <marker date="1542240780938" expanded="true" signature="10736:10817" ph="INSERT INTO politicianEvent... " />
+                <marker date="1542240780938" expanded="true" signature="10861:10942" ph="INSERT INTO politicianEvent... " />
+                <marker date="1542240780938" expanded="true" signature="10986:11067" ph="INSERT INTO politicianEvent... " />
               </folding>
             </state>
           </provider>
@@ -71,7 +68,7 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="302">
               <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -103,8 +100,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="80" column="55" lean-forward="false" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
+            <state relative-caret-position="295">
+              <caret line="103" column="4" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -126,6 +123,8 @@
       <find>DATABASE_URI</find>
       <find>SECRET_KEY</find>
       <find>politician</find>
+      <find>politician_dictionary[politician_id].get('attr').get('substitute_id')</find>
+      <find>politician_dictionary</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,11 +148,11 @@
         <option value="$PROJECT_DIR$/webapp/bdtools2.py" />
         <option value="$PROJECT_DIR$/app2.py" />
         <option value="$PROJECT_DIR$/notes" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/webapp/views/services.py" />
-        <option value="$PROJECT_DIR$/webapp/models.py" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/webapp/bdtools.py" />
+        <option value="$PROJECT_DIR$/webapp/models.py" />
         <option value="$PROJECT_DIR$/webapp/settings/base.py" />
       </list>
     </option>
@@ -462,7 +461,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42409638" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46938777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3782313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23247497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789117" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -477,6 +476,27 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42409638" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37142858" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23247497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789117" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -486,7 +506,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -497,17 +517,13 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#4039#5955#0" expanded="false" />
-            <element signature="e#6051#6520#0" expanded="false" />
-            <element signature="e#6547#11042#0" expanded="false" />
-            <element signature="e#11158#11465#0" expanded="false" />
-            <element signature="e#12631#12910#0" expanded="false" />
-            <element signature="e#12964#13140#0" expanded="false" />
-            <marker date="1542236939691" expanded="true" signature="10434:10515" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10559:10640" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10684:10765" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10809:10890" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10934:11015" ph="INSERT INTO politicianEvent... " />
+            <element signature="e#4091#6007#0" expanded="false" />
+            <element signature="e#6103#6572#0" expanded="false" />
+            <marker date="1542240780938" expanded="true" signature="10486:10567" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10611:10692" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10736:10817" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10861:10942" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10986:11067" ph="INSERT INTO politicianEvent... " />
           </folding>
         </state>
       </provider>
@@ -823,11 +839,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="56">
+          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding>
+            <element signature="e#77#86#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -839,58 +857,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding>
-            <element signature="e#77#86#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/views/services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/models.py">
+    <entry file="file://$PROJECT_DIR$/webapp/bdtools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="80" column="55" lean-forward="false" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="276">
+          <caret line="303" column="77" lean-forward="false" selection-start-line="303" selection-start-column="77" selection-end-line="303" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#4091#6007#0" expanded="false" />
+            <element signature="e#6103#6572#0" expanded="false" />
+            <marker date="1542240780938" expanded="true" signature="10486:10567" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10611:10692" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10736:10817" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10861:10942" ph="INSERT INTO politicianEvent... " />
+            <marker date="1542240780938" expanded="true" signature="10986:11067" ph="INSERT INTO politicianEvent... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/bdtools.py">
+    <entry file="file://$PROJECT_DIR$/webapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="273" column="49" lean-forward="true" selection-start-line="273" selection-start-column="49" selection-end-line="273" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#4039#5955#0" expanded="false" />
-            <element signature="e#6051#6520#0" expanded="false" />
-            <element signature="e#6547#11042#0" expanded="false" />
-            <element signature="e#11158#11465#0" expanded="false" />
-            <element signature="e#12631#12910#0" expanded="false" />
-            <element signature="e#12964#13140#0" expanded="false" />
-            <marker date="1542236939691" expanded="true" signature="10434:10515" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10559:10640" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10684:10765" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10809:10890" ph="INSERT INTO politicianEvent... " />
-            <marker date="1542236939691" expanded="true" signature="10934:11015" ph="INSERT INTO politicianEvent... " />
-          </folding>
+        <state relative-caret-position="295">
+          <caret line="103" column="4" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="302">
           <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />

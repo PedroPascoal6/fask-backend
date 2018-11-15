@@ -40,7 +40,7 @@ def save_politician(new_politician):
                             superior_name=new_politician.get('superior_name'),
                             subordinate_id=new_politician.get('subordinate_id'),
                             subordinate_name=new_politician.get('subordinate_name'),
-                            substitute_id = new_politician.get('substitute_id'))
+                            substitute_id=new_politician.get('substitute_id'))
 
     db.session.add(politician)
     db.session.commit()
@@ -55,26 +55,27 @@ def save_event(new_event):
     db.session.commit()
 
 
-def setPoliticianInactive(politician_id,substitute_id):
-    updateActiveStateOnPolitician(politician_id,substitute_id, False)
+def setPoliticianInactive(politician_id, substitute_id):
+    updateActiveStateOnPolitician(politician_id, substitute_id, False)
 
 
-def setPoliticianActive(politician_id,substitute_id):
-    updateActiveStateOnPolitician(politician_id,substitute_id, True)
+def setPoliticianActive(politician_id, substitute_id):
+    updateActiveStateOnPolitician(politician_id, substitute_id, True)
 
 
-def updateActiveStateOnPolitician(politician_id,substitute_id, state):
+def updateActiveStateOnPolitician(politician_id, substitute_id, state):
     politician = Politician.query.filter_by(id=politician_id).first()
     politician.active = state
     politician.substitute_id = substitute_id
     db.session.commit()
 
-#Passagem de subordinados para outro politico
+
+# Passagem de subordinados para outro politico
 def updateSubordinates(superior_id, subordinate_list, on_top):
     politician = Politician.query.filter_by(id=superior_id).first()
     for subordinate_selected in subordinate_list:
         politician_id = subordinate_selected.get('attr').get('id')
-        #caso não seja o mesmo
+        # caso não seja o mesmo
         if politician_id != politician:
             subordinate = Politician.query.filter_by(id=politician_id).first()
             subordinate.superior_id = superior_id
@@ -83,14 +84,26 @@ def updateSubordinates(superior_id, subordinate_list, on_top):
                 politician.superior_id = None
             db.session.commit()
 
-#Reaver os seus subordinados
-def resetSubordinates(superior_id, subordinate_list):
+
+# Reaver os seus subordinados
+def resetSubordinates(superior_id, subordinate_Substitute):
     politician = Politician.query.filter_by(id=superior_id).first()
-    for n in subordinate_list:
-        subordinate_id = subordinate_list[n].get('attr').get('id')
-        original_superior = subordinate_list[n].get('attr').get('superiorid_original')
-        if original_superior == superior_id:
+    subordinate_list = subordinate_Substitute.get('children')
+    for subordinate_selected in subordinate_list:
+        subordinate_id = subordinate_selected.get('attr').get('id')
+        original_superior = subordinate_selected.get('attr').get('superiorid_original')
+        print("subordinate_id->"+str(subordinate_id))
+        print("original_superior->"+str(original_superior))
+        print("superior_id->"+str(superior_id))
+        print("if ->" + str(int(original_superior) == int(superior_id)))
+        if int(original_superior) == int(superior_id):
             subordinate = Politician.query.filter_by(id=subordinate_id).first()
             subordinate.superior_id = superior_id
-            subordinate.superior_name = politician.get('attr').get('name')
-            db.session.commit()
+            subordinate.superior_name = politician.name
+
+    #TODO rever se é necessario ou se basta apenas adicionar
+    if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
+        subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
+        subordinate.superior_id = superior_id
+        subordinate.superior_name = politician.name
+    db.session.commit()
