@@ -1,3 +1,4 @@
+
 from datetime import datetime
 from webapp.models import Politician, Event, save_politician, save_event, setPoliticianInactive, setPoliticianActive, \
     updateSubordinates, resetSubordinates
@@ -140,6 +141,9 @@ def get_subordinate(childrens, n):
         return childrens[n]
     else:
         get_subordinate(childrens[n + 1], n + 1)
+
+
+
 
 
 def generateData():
@@ -299,6 +303,6 @@ def createEventOffJail(politician_id):
 
 
 def updateSubordinates_OutJail(politician_id, substitute_id):
-    print ("substitute_id -> "+str(substitute_id))
+    print ("substitute_id -> " + str(substitute_id))
     if substitute_id is not None:
         resetSubordinates(politician_id, politician_dictionary[substitute_id])

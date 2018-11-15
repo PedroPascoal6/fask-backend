@@ -5,6 +5,7 @@ from webapp import factory
 from webapp.views import services
 from flask_cors import CORS
 from flask_restful import Resource, Api, reqparse
+from webapp.models import generate_data
 
 os.environ['APP_SETTINGS_FILE'] = 'settings/local.py'
 
@@ -15,6 +16,7 @@ api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('politicianid', type=int)
 parser.add_argument('jail', type=bool)
+parser.add_argument('amount', type=int)
 
 
 class Services(Resource):
@@ -28,8 +30,16 @@ class Services(Resource):
         services.createEvent(politician_id, jail)
         return {"success": 'true'}
 
+class Support(Resource):
+    def post(self):
+        args = parser.parse_args()
+        amount = args['amount']
+        generate_data(amount)
+        return {"success": 'true'}
+
 
 api.add_resource(Services, '/politicians')  # Route_1
+api.add_resource(Support, '/support')  # Route_2
 
 
 @app.after_request

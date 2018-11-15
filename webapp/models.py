@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
+import names, random
+from random import randint
 
 db = SQLAlchemy()
 
@@ -92,18 +94,48 @@ def resetSubordinates(superior_id, subordinate_Substitute):
     for subordinate_selected in subordinate_list:
         subordinate_id = subordinate_selected.get('attr').get('id')
         original_superior = subordinate_selected.get('attr').get('superiorid_original')
-        print("subordinate_id->"+str(subordinate_id))
-        print("original_superior->"+str(original_superior))
-        print("superior_id->"+str(superior_id))
+        print("subordinate_id->" + str(subordinate_id))
+        print("original_superior->" + str(original_superior))
+        print("superior_id->" + str(superior_id))
         print("if ->" + str(int(original_superior) == int(superior_id)))
         if int(original_superior) == int(superior_id):
             subordinate = Politician.query.filter_by(id=subordinate_id).first()
             subordinate.superior_id = superior_id
             subordinate.superior_name = politician.name
 
-    #TODO rever se é necessario ou se basta apenas adicionar
+    # TODO rever se é necessario ou se basta apenas adicionar
     if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
         subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
         subordinate.superior_id = superior_id
         subordinate.superior_name = politician.name
     db.session.commit()
+
+
+def generate_data(amount):
+    Politician.query.delete()
+    choice = list(["yes", "no"])
+    for n in range(0, amount):
+        new_politician_name = names.get_full_name()
+        superior_name = None
+        superior_id = None
+        if random.choice(choice) == "yes":
+            if n > 0:
+                superior_id = randint(0, n - 1)
+                politician = Politician.query.filter_by(id=superior_id).first()
+                superior_name = politician.name
+                if politician.subordinate_id is None:
+                    politician.subordinate_id = n
+                    politician.subordinate_name = new_politician_name
+        else:
+            superior_id = None
+
+        new_politician = {"id": n,
+                          "name": new_politician_name,
+                          "active": True,
+                          "superior_id": superior_id,
+                          "superior_id_original": superior_id,
+                          "superior_name": superior_name,
+                          "subordinate_id": None,
+                          "subordinate_name": None
+                          }
+        save_politician(new_politician)

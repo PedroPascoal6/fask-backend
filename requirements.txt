@@ -16,5 +16,6 @@ Werkzeug==0.14.1
 flask-sqlalchemy==2.3.2
 envparse==0.2.0
 psycopg2==2.7.6.1
+names==0.3.0
 
 
