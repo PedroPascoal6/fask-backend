@@ -24,6 +24,5 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 TESTING = False
-CREATE_SAMPLE_DATA = False
 
 SECRET_KEY = "acnkla9999qeacno5kcbasfrtgtrgtrgdvsdvblrsivbsevisekqwl"

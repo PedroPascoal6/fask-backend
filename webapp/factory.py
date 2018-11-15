@@ -17,6 +17,4 @@ def create_app():
         db.init_app(flask_app)  # Required by Flask-SQLAlchemy
         if not flask_app.config['TESTING']:
             db.create_all()
-        if flask_app.config['CREATE_SAMPLE_DATA']:
-            generateData()
     return flask_app
