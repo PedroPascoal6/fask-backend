@@ -1,5 +1,4 @@
 import os
-from webapp.bdtools import generateData
 from flask import Flask, render_template
 
 from webapp.models import db
