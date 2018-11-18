@@ -21,7 +21,7 @@ parser.add_argument('amount', type=int)
 
 class Services(Resource):
     def get(self):
-        return services.dosomething()
+        return services.get_data()
 
     def post(self):
         args = parser.parse_args()
