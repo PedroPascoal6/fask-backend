@@ -1,6 +1,5 @@
 from datetime import datetime
-from webapp.models import Politician, Event, save_politician, save_event, setPoliticianInactive, setPoliticianActive, \
-    updateSubordinates, resetSubordinates
+from webapp.models import Politician, save_event, updateSubordinates, resetSubordinates, setPoliticianInactive
 
 politician_dictionary = {}
 data_formated = []
@@ -200,9 +199,12 @@ def updateSubordinates_OnJail(politician_id):
 
 def createEventOffJail(politician_id):
     readDBPolitician()
-    substitute_id = politician_dictionary[int(politician_id)].get('attr').get('substitute_id')
-    setPoliticianActive(politician_id, None)
-    print ("createEventOffJail  substitute_id = " + str(substitute_id))
+    #substitute_id = politician_dictionary[int(politician_id)].get('attr').get('substitute_id')
+    if politician_dictionary[int(politician_id)].get('attr').get('substitute_id') is None:
+        return None
+    else:
+        substitute_id = politician_dictionary[int(politician_id)].get('attr').get('substitute_id')
+
     updateSubordinates_OutJail(politician_id, substitute_id)
     new_event_0 = {
         "date": datetime.now(),

@@ -30,6 +30,7 @@ class Services(Resource):
         services.createEvent(politician_id, jail)
         return {"success": 'true'}
 
+
 class Support(Resource):
     def post(self):
         args = parser.parse_args()

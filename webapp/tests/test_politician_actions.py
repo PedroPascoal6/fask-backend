@@ -30,5 +30,6 @@ class TestPolitician(MyTest):
     #
     #
 
+
     def test(self):
         remove_subordinates_not_active(formatDataToFrontEnd(readDBPolitician())[0])

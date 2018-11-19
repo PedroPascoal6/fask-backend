@@ -1,6 +1,5 @@
 from flask import jsonify
-from webapp.politician_actions import updatePoliticians,createEventOnJail,createEventOffJail
-
+from webapp.politician_actions import updatePoliticians, createEventOnJail, createEventOffJail
 
 
 def get_data():

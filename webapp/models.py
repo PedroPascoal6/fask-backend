@@ -65,24 +65,26 @@ def setPoliticianInactive(politician_id, substitute_id):
     updateActiveStateOnPolitician(politician_id, substitute_id, False)
 
 
-def setPoliticianActive(politician_id, substitute_id):
-    updateActiveStateOnPolitician(politician_id, substitute_id, True)
-
 
 def updateActiveStateOnPolitician(politician_id, substitute_id, state):
     print (
         "ON updateActiveStateOnPolitician politicianid=" + str(politician_id) + " substitute ID=" + str(
             substitute_id) + " state" + str(state))
-    if substitute_id is not None:
-        politician = Politician.query.filter_by(id=politician_id).first()
-        politician.active = state
-        politician.substitute_id = substitute_id
-        substitute = Politician.query.filter_by(id=substitute_id).first()
-        politician_list = Politician.query.filter_by(superior_id=politician_id).all()
-        for subordinate in politician_list:
-            subordinate.superior_id = politician.substitute_id
-            subordinate.name = substitute.name
-        db.session.commit()
+
+    # Get Politician
+    politician = Politician.query.filter_by(id=politician_id).first()
+    # Change values
+    politician.active = state
+    politician.substitute_id = substitute_id
+    # Get Substitute Politician
+    substitute = Politician.query.filter_by(id=substitute_id).first()
+    # Get All subordinates of this Politician
+    politician_list = Politician.query.filter_by(superior_id=politician_id).all()
+    # Change Values
+    for subordinate in politician_list:
+        subordinate.superior_id = politician.substitute_id
+        subordinate.name = substitute.name
+    db.session.commit()
 
 
 # Passagem de subordinados para outro politico
@@ -101,9 +103,11 @@ def updateSubordinates(superior_id, subordinate_list, on_top):
 
 
 def resetSubordinates(superior_id, subordinate_Substitute):
-    print ("resetSubordinates -> " + str(subordinate_Substitute.get('attr').get('id')))
+    # Get Superior Politician
     politician = Politician.query.filter_by(id=superior_id).first()
+    # Change Values
     politician.active = True
+
     subordinate_list = subordinate_Substitute.get('children')
     for subordinate_selected in subordinate_list:
         subordinate_id = subordinate_selected.get('attr').get('id')
@@ -111,17 +115,20 @@ def resetSubordinates(superior_id, subordinate_Substitute):
         print("subordinate_id->" + str(subordinate_id))
         print("original_superior->" + str(original_superior))
         print("superior_id->" + str(superior_id))
-        print("if ->" + str(int(original_superior) == int(superior_id)))
+        print("It's your subordinate? ->" + str(int(original_superior) == int(superior_id)))
+
+        # If it's your subordinate because some come from Substitute Politician
         if int(original_superior) == int(superior_id):
             subordinate = Politician.query.filter_by(id=subordinate_id).first()
             subordinate.superior_id = superior_id
             subordinate.superior_name = politician.name
 
-    if subordinate_Substitute.get('attr').get('superiorid_original') is not None:
-        if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
-            subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
-            subordinate.superior_id = superior_id
-            subordinate.superior_name = politician.name
+    # if subordinate_Substitute.get('attr').get('superiorid_original') is not None:
+    #     if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
+    #         subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
+    #         subordinate.superior_id = superior_id
+    #         subordinate.superior_name = politician.name
+
     db.session.commit()
 
 
