@@ -17,6 +17,8 @@ class Politician(db.Model):
     subordinate_id = db.Column('subordinate_id', db.Integer())
     subordinate_name = db.Column('subordinate_name', db.String(255))
     substitute_id = db.Column('substitute_id', db.Integer())
+    level = db.Column('level', db.Integer())
+    delegated_politician = db.Column('delegated_politician', db.Integer())
 
     def as_dict(self):
         return {c.name: str(getattr(self, c.name)) for c in self.__table__.columns}
@@ -42,7 +44,9 @@ def save_politician(new_politician):
                             superior_name=new_politician.get('superior_name'),
                             subordinate_id=new_politician.get('subordinate_id'),
                             subordinate_name=new_politician.get('subordinate_name'),
-                            substitute_id=new_politician.get('substitute_id'))
+                            substitute_id=new_politician.get('substitute_id'),
+                            level=new_politician.get('level'),
+                            delegated_politician=new_politician.get('delegated_politician'))
 
     db.session.add(politician)
     db.session.commit()
@@ -66,10 +70,19 @@ def setPoliticianActive(politician_id, substitute_id):
 
 
 def updateActiveStateOnPolitician(politician_id, substitute_id, state):
-    politician = Politician.query.filter_by(id=politician_id).first()
-    politician.active = state
-    politician.substitute_id = substitute_id
-    db.session.commit()
+    print (
+        "ON updateActiveStateOnPolitician politicianid=" + str(politician_id) + " substitute ID=" + str(
+            substitute_id) + " state" + str(state))
+    if substitute_id is not None:
+        politician = Politician.query.filter_by(id=politician_id).first()
+        politician.active = state
+        politician.substitute_id = substitute_id
+        substitute = Politician.query.filter_by(id=substitute_id).first()
+        politician_list = Politician.query.filter_by(superior_id=politician_id).all()
+        for subordinate in politician_list:
+            subordinate.superior_id = politician.substitute_id
+            subordinate.name = substitute.name
+        db.session.commit()
 
 
 # Passagem de subordinados para outro politico
@@ -87,9 +100,10 @@ def updateSubordinates(superior_id, subordinate_list, on_top):
             db.session.commit()
 
 
-# Reaver os seus subordinados
 def resetSubordinates(superior_id, subordinate_Substitute):
+    print ("resetSubordinates -> " + str(subordinate_Substitute.get('attr').get('id')))
     politician = Politician.query.filter_by(id=superior_id).first()
+    politician.active = True
     subordinate_list = subordinate_Substitute.get('children')
     for subordinate_selected in subordinate_list:
         subordinate_id = subordinate_selected.get('attr').get('id')
@@ -103,11 +117,11 @@ def resetSubordinates(superior_id, subordinate_Substitute):
             subordinate.superior_id = superior_id
             subordinate.superior_name = politician.name
 
-    # TODO rever se é necessario ou se basta apenas adicionar
-    if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
-        subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
-        subordinate.superior_id = superior_id
-        subordinate.superior_name = politician.name
+    if subordinate_Substitute.get('attr').get('superiorid_original') is not None:
+        if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
+            subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
+            subordinate.superior_id = superior_id
+            subordinate.superior_name = politician.name
     db.session.commit()
 
 
@@ -118,16 +132,19 @@ def generate_data(amount):
         new_politician_name = names.get_full_name()
         superior_name = None
         superior_id = None
+        level = 0
         if random.choice(choice) == "yes":
             if n > 0:
                 superior_id = randint(0, n - 1)
                 politician = Politician.query.filter_by(id=superior_id).first()
+                level = politician.level + 1
                 superior_name = politician.name
                 if politician.subordinate_id is None:
                     politician.subordinate_id = n
                     politician.subordinate_name = new_politician_name
         else:
             superior_id = None
+            level = 0
 
         new_politician = {"id": n,
                           "name": new_politician_name,
@@ -136,6 +153,8 @@ def generate_data(amount):
                           "superior_id_original": superior_id,
                           "superior_name": superior_name,
                           "subordinate_id": None,
-                          "subordinate_name": None
+                          "subordinate_name": None,
+                          "level": level,
+                          "delegated_politician": None
                           }
         save_politician(new_politician)
