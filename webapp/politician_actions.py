@@ -1,5 +1,5 @@
 from datetime import datetime
-from webapp.models import Politician, save_event, updateSubordinates, resetSubordinates, setPoliticianInactive
+from webapp.models import Politician, save_event, update_subordinates, resetSubordinates, set_politician_inactive
 
 politician_dictionary = {}
 data_formated = []
@@ -55,25 +55,11 @@ def formatDataToFrontEnd(politician_dictionary):
             data_formated.append(politician_dictionary[n])
     return data_formated
 
-
-# def remove_subordinates_not_active_old(subordinate_list):
-#     for subordinate in subordinate_list:
-#         if not subordinate.get('attr').get('active') and subordinate.get('attr').get('id') != None:
-#             subordinate_list.remove(subordinate)
-#         if subordinate.get('children') and subordinate.get('attr').get('active'):
-#             subordinate_copy = subordinate
-#             subordinate_list.remove(subordinate)
-#             subordinate = {'attr': subordinate_copy,
-#                            'children': remove_subordinates_not_active(subordinate_copy.get('children'))}
-#             subordinate_list.append(subordinate)
-#     return subordinate_list
-
-
 def remove_subordinates_not_active(subordinate_list):
     #This delete the disable politicans from front-end Data
     print ("subordinate_list --->>" + str(subordinate_list))
     for subordinate in subordinate_list:
-        print ("subordinate_id --->>" + str(subordinate['attr'].get('children')))
+        # GET subordinates list
         if subordinate['attr'].get('children'):
             subordinate = {'attr': subordinate['attr'],
                               'children': remove_subordinates_not_active(
@@ -145,7 +131,7 @@ def createEventOnJail(politician_id):
     superior_id = updateSubordinates_OnJail(politician_id)
     print ("substitute ID ---->" + str(superior_id))
     if superior_id != -1:
-        setPoliticianInactive(politician_id, superior_id)
+        set_politician_inactive(politician_id, superior_id)
 
     new_event_0 = {
         "date": datetime.now(),
@@ -165,13 +151,13 @@ def updateSubordinates_OnJail_old(politician_id):
     if superior_id is not None and not politician_dictionary[int(superior_id)].get('attr').get('active'):
         updateSubordinates_OnJail(superior_id)
     elif superior_id is not None and politician_dictionary[int(superior_id)].get('attr').get('active'):
-        updateSubordinates(superior_id, politician_dictionary[int(politician_id)].get('children'), False)
+        update_subordinates(superior_id, politician_dictionary[int(politician_id)].get('children'), False)
         return superior_id
     elif superior_id is None and politician.get('attr').get('subordinateid') is not None:
         for politician_selected in politician.get('children'):
             if politician_selected.get('attr').get('active'):
                 new_superior_id = politician_selected.get('attr').get('id')
-                updateSubordinates(new_superior_id, politician_dictionary[int(politician_id)].get('children'), True)
+                update_subordinates(new_superior_id, politician_dictionary[int(politician_id)].get('children'), True)
                 return new_superior_id
 
 def updateSubordinates_OnJail(politician_id):

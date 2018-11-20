@@ -61,12 +61,11 @@ def save_event(new_event):
     db.session.commit()
 
 
-def setPoliticianInactive(politician_id, substitute_id):
-    updateActiveStateOnPolitician(politician_id, substitute_id, False)
+def set_politician_inactive(politician_id, substitute_id):
+    update_active_state_politician(politician_id, substitute_id, False)
 
 
-
-def updateActiveStateOnPolitician(politician_id, substitute_id, state):
+def update_active_state_politician(politician_id, substitute_id, state):
     print (
         "ON updateActiveStateOnPolitician politicianid=" + str(politician_id) + " substitute ID=" + str(
             substitute_id) + " state" + str(state))
@@ -88,7 +87,7 @@ def updateActiveStateOnPolitician(politician_id, substitute_id, state):
 
 
 # Passagem de subordinados para outro politico
-def updateSubordinates(superior_id, subordinate_list, on_top):
+def update_subordinates(superior_id, subordinate_list, on_top):
     politician = Politician.query.filter_by(id=superior_id).first()
     for subordinate_selected in subordinate_list:
         politician_id = subordinate_selected.get('attr').get('id')
@@ -122,12 +121,6 @@ def resetSubordinates(superior_id, subordinate_Substitute):
             subordinate = Politician.query.filter_by(id=subordinate_id).first()
             subordinate.superior_id = superior_id
             subordinate.superior_name = politician.name
-
-    # if subordinate_Substitute.get('attr').get('superiorid_original') is not None:
-    #     if int(subordinate_Substitute.get('attr').get('superiorid_original')) == int(superior_id):
-    #         subordinate = Politician.query.filter_by(id=int(subordinate_Substitute.get('attr').get('id'))).first()
-    #         subordinate.superior_id = superior_id
-    #         subordinate.superior_name = politician.name
 
     db.session.commit()
 
